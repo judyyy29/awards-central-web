@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Manage Emails</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header" style="padding: 10px;">
+            <h2>Email Management Dashboard</h2>
+        </header>
+        
+        <div style="margin-top: 20px; background: white; padding: 20px; border-radius: 10px;">
+            <table style="width: 100%; border-collapse: collapse; color: black;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #ccc;">
+                        <th style="text-align: left; padding: 10px;">ID</th>
+                        <th style="text-align: left; padding: 10px;">Email Address</th>
+                        <th style="text-align: right; padding: 10px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="email-table-body">
+                    </tbody>
+            </table>
+        </div>
+        <br>
+        <a href="index.html" style="color: white;">Back to Announcements</a>
+    </div>
+
+    <script>
+        async function fetchEmails() {
+            const res = await fetch('http://localhost:3000/emails');
+            const data = await res.json();
+            const tbody = document.getElementById('email-table-body');
+            tbody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = `
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">${item.id}</td>
+                        <td style="padding: 10px;">${item.email}</td>
+                        <td style="padding: 10px; text-align: right;">
+                            <button onclick="deleteEmail(${item.id})" style="background: #c40000; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Delete</button>
+                        </td>
+                    </tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        async function deleteEmail(id) {
+            if(confirm("Are you sure you want to remove this email?")) {
+                await fetch(`http://localhost:3000/emails/${id}`, { method: 'DELETE' });
+                fetchEmails();
+            }
+        }
+
+        fetchEmails();
+    </script>
+</body>
+</html>

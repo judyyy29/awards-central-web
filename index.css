@@ -1,0 +1,342 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ebebeb 0%, #222222 100%);
+    color: rgb(0, 0, 0);
+    background-image: url('images/bg.png');
+    background-repeat: repeat;
+    min-height: 100vh;
+    margin: 0;
+}
+.titless {
+    position: relative;
+    background: linear-gradient(to right, rgba(39, 39, 39), rgba(3, 3, 3));
+    padding: 2px 20px 5px 5px;
+    margin-bottom: -10px;
+    height: 150px;
+}
+.container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.header-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.box {  
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.box p {
+    font-size: 18px;
+    color: rgb(200, 200, 200);
+    margin-top: -15px;
+}
+.shiny-text h1 {
+    font-size: 50px;
+    font-family: poppins, sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 77);
+    /*
+    background: linear-gradient(
+        to bottom, 
+        #cf9d38 0%, 
+        #ffecb3 25%, 
+        #b8860b 50%, 
+        #fee140 100%
+  );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite;
+    */
+}
+img.logo {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: auto;
+    margin: 0 20px 20px 0px;
+    text-align: center;
+    border-radius: 100%;
+    justify-content: center;
+}
+.deptsbox {
+    text-align: center;
+}
+.deptsbox nav ul li {
+    position: relative;
+    list-style-type: none;
+    display: inline-block; 
+    margin: 0 10px; 
+    font-size: 15px;
+    border: 3px solid rgb(66, 66, 11);
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: background 0.2s, border-radius 0.2s;
+    cursor: pointer;
+    background-color: rgb(255, 251, 245);
+}
+.deptsbox nav ul li:hover {
+    background-color: rgb(255, 255, 97);
+    border-radius: 10px 10px 0 0; 
+}
+hr {
+    border: 1px solid gray;
+}
+.dropdown-list {
+    position: absolute;
+    display: none; 
+    left: -2px; 
+    top: 100%;
+    width: calc(100% + 4px); 
+    background-color: #111;
+    border: 2px solid rgb(204, 204, 77);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 0;
+    margin: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+.parent-item:hover .dropdown-list {
+    display: block !important;
+}
+.dropdown-list li {
+    display: block !important;
+    width: 85% !important;
+    margin: 8px auto !important; 
+    padding: 10px 0 !important;
+    border: 2px solid rgba(204, 204, 77, 0.4) !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+    font-size: 13px !important;
+    line-height: 1.2;
+}
+.dropdown-list li:hover {
+    background-color: rgb(255, 255, 77);
+    border-color: rgb(204, 204, 77);
+}
+.dropdown-list.show {
+    display: block !important;
+    transition-duration: 2s;
+}
+.deptsbox nav ul li:hover {
+    background-color: rgb(128, 128, 50);
+    cursor: pointer;
+}
+.announcement {
+    margin:10px auto;
+    max-width: 1250px;
+    border-radius: 10px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    border: 3px solid rgb(148, 148, 21);
+    margin-bottom: 0;
+    border-radius: 10px;
+    background-color: #282626;
+    border-radius: 10px;
+    color: white;
+}
+.header p {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    border: 1px solid gray;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.header p:hover {
+    background-color: rgb(204, 204, 77);
+    color: blanchedalmond;
+    cursor: pointer;
+    color: black;
+}
+.header h2 {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    padding: 15px;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(121, 121, 121, 0.8);
+}
+
+.modal-content {
+    background-color: rgb(75, 75, 75);
+    margin: 10% auto;
+    padding: 20px;
+    border: 2px solid rgb(204, 204, 77);
+    width: 50%;
+    border-radius: 10px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+input[type="file"]#annImage {
+    color: white;
+    border: 2px solid rgb(204, 204, 77);
+    border-radius: 5px;
+    background-color: #222222;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+#removeImageContainer input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: rgb(204, 204, 77);
+}
+
+.close-btn {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: rgb(204, 204, 77);
+}
+
+#annTitle, #annContent {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#annContent {
+    height: 100px;
+    resize: vertical;
+}
+
+.modal-content button {
+    margin-top: 10px;
+}
+
+#annForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+#annForm button {
+    background-color: rgb(204, 204, 77);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#annForm button:hover {
+    background-color: rgb(128, 128, 50);
+}
+
+/* Keep all your existing CSS, just add/verify these: */
+
+input[type="file"]#annImage {
+    color: white;
+    border: 2px solid rgb(204, 204, 77);
+    border-radius: 5px;
+    background-color: #222222;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Modal UI fix */
+.modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#removeImageContainer input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: rgb(204, 204, 77);
+}
+
+#announcement-list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#announcement-list li {
+    border: 1px solid rgb(50, 50, 50);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    background-color: #333333;
+    color: #111;
+}
+
+.search-container {
+    position: absolute;
+    top: 50px; 
+    right: 50px;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin: 0;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    border: 3px solid rgb(155, 155, 18);
+    border-radius: 25px;
+    color: rgb(17, 17, 17);
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    box-shadow: 0 0 15px rgba(204, 204, 77, 0.4);
+    background-color: #f7f7f7;
+}
+
+.search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgb(204, 204, 77);
+    cursor: pointer;
+    padding: 10px;
+}
