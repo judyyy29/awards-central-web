@@ -30,7 +30,7 @@
 
     <script>
         async function fetchEmails() {
-            const res = await fetch('http://localhost:3000/emails');
+            const res = await fetch('https://awards-central-philippines.onrender.com/emails');
             const data = await res.json();
             const tbody = document.getElementById('email-table-body');
             tbody.innerHTML = '';
@@ -50,7 +50,7 @@
 
         async function deleteEmail(id) {
             if(confirm("Are you sure you want to remove this email?")) {
-                await fetch(`http://localhost:3000/emails/${id}`, { method: 'DELETE' });
+                await fetch(`https://awards-central-philippines.onrender.com/emails/${id}`, { method: 'DELETE' });
                 fetchEmails();
             }
         }
@@ -58,4 +58,5 @@
         fetchEmails();
     </script>
 </body>
+
 </html>
