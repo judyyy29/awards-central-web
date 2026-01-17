@@ -26,13 +26,17 @@ const upload = multer({ storage: storage });
 
 app.use('/uploads', express.static('uploads'));
 
+// --- DATABASE CONNECTION ---
 const db = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password: process.env.DB_PASSWORD, 
-    database: 'web_site'
-});
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT || 3306,
+    ssl: { rejectUnauthorized: true } 
+}); 
 
+// --- EMAIL TRANSPORTER ---
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -256,5 +260,5 @@ app.post('/emails', (req, res) => { const { email } = req.body; db.query('INSERT
 app.delete('/emails/:id', (req, res) => { db.query('DELETE FROM emails WHERE id = ?', [req.params.id], (err) => { res.send("Deleted"); }); });
 app.get('/emails/check/:email', (req, res) => { db.query('SELECT * FROM emails WHERE email = ?', [req.params.email], (err, results) => { res.json({ exists: results.length > 0 }); }); });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 10000; 
+app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
